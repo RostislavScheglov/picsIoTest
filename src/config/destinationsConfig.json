@@ -1,0 +1,30 @@
+[
+  {
+    "name": "destination1",
+    "url": "http://example.com/endpoint",
+    "transport": "http.post"
+  },
+  {
+    "name": "destination2",
+    "url": "http://example2.com/endpoint",
+    "transport": "http.put"
+  },
+  {
+    "name": "destination3",
+    "url": "http://example3.com/endpoint",
+    "transport": "http.get"
+  },
+  {
+    "name": "destination4",
+    "url": "http://example4.com/endpoint",
+    "transport": "https.put"
+  },
+  {
+    "name": "destination5",
+    "transport": "console.log"
+  },
+  {
+    "name": "destination6",
+    "transport": "console.warn"
+  }
+]
