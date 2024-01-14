@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken'
 import { NextFunction, Response } from 'express'
-import { CustomRequest, secret } from './jwtInjection'
+import { CustomRequest } from './jwtInjection'
+import { Secret } from '../config/appConfing'
 
 export function jwtAuthorization(
   req: CustomRequest,
@@ -9,13 +10,11 @@ export function jwtAuthorization(
 ) {
   try {
     const token = req.token
-    if (token) {
-      const decoded = jwt.verify(token, secret)
-      next()
-    } else {
-      return res.status(403).json([{ msg: 'No token' }])
-    }
+    if (!token) return res.status(403).json([{ msg: 'No token' }])
+    const decoded: jwt.JwtPayload = jwt.verify(token, Secret) as jwt.JwtPayload
+    req.auth = decoded._id //Authorizied request
+    next()
   } catch (err) {
-    return res.status(403).json([{ msg: 'Bad session' }])
+    return res.status(403).json([{ msg: 'Bad authorization token' }])
   }
 }

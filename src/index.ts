@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import eventRouter from './routes/eventRouter'
 import cors from 'cors'
+import { DbUrl } from './config/appConfing'
 
 const app = express()
 app.use(express.json())
@@ -14,8 +15,6 @@ app.listen(port, () => {
 })
 
 mongoose
-  .connect(
-    'mongodb+srv://rostislav7333:Ul6DHYsqX0ewkSkP@clusterfortest.z0ufh3m.mongodb.net/?retryWrites=true&w=majority'
-  )
+  .connect(DbUrl)
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Could not connect to MongoDB...', err))

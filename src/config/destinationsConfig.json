@@ -1,23 +1,23 @@
 [
   {
     "name": "destination1",
-    "url": "http://example.com/endpoint",
-    "transport": "http.post"
+    "url": "https://postman-echo.com/post",
+    "transport": "https.post"
   },
   {
     "name": "destination2",
-    "url": "http://example2.com/endpoint",
-    "transport": "http.put"
+    "url": "https://postman-echo.com/put",
+    "transport": "https.put"
   },
   {
     "name": "destination3",
-    "url": "http://example3.com/endpoint",
-    "transport": "http.get"
+    "url": "https://postman-echo.com/get",
+    "transport": "https.get"
   },
   {
     "name": "destination4",
-    "url": "http://example4.com/endpoint",
-    "transport": "https.put"
+    "url": "https://postman-echo.com/patch",
+    "transport": "https.patch"
   },
   {
     "name": "destination5",

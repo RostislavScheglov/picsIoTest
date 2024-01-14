@@ -1,16 +1,10 @@
 import express, { RequestHandler } from 'express'
 import { jwtInjection } from '../middleware/jwtInjection'
 import { jwtAuthorization } from '../middleware/jwtAuthorization'
-import { eventController } from '../controllers/eventController'
+import { eventController, getAllLogs } from '../controllers/eventController'
 
 const eventRouter = express.Router()
-
-eventRouter.get(
-  '/',
-  jwtInjection as RequestHandler,
-  jwtAuthorization as RequestHandler,
-  eventController
-)
+//don`t know if it was neccessary to make like this
 eventRouter.post(
   '/',
   jwtInjection as RequestHandler,
@@ -23,11 +17,12 @@ eventRouter.put(
   jwtAuthorization as RequestHandler,
   eventController
 )
-eventRouter.delete(
+eventRouter.patch(
   '/',
   jwtInjection as RequestHandler,
   jwtAuthorization as RequestHandler,
   eventController
 )
+eventRouter.get('/logs', getAllLogs)
 
 export default eventRouter
