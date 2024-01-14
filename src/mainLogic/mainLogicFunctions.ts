@@ -68,13 +68,13 @@ export const consoleActions = (
   const action = destination.transport.split('.')[1]
   const consoleActions: { [key: string]: () => void } = {
     log: () => {
-      console.log(event.payload)
+      console.log({ payload: event.payload, action: 'Log' })
     },
     warn: () => {
-      console.warn(event.payload)
+      console.warn({ payload: event.payload, action: 'Warn' })
     },
     error: () => {
-      console.error(event.payload)
+      console.error({ payload: event.payload, action: 'Error' })
     },
   }
   consoleActions[action]()

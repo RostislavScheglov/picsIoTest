@@ -4,7 +4,7 @@ This is an Express app written in TypeScript. The app is structured in a modular
 
 This app contains big amount of comments that can help you understend what`s going on.
 
-I used `https://postman-echo.com` API as endpoints to send final requests after all logic is done.
+I used `https://postman-echo.com` API as endpoints to send final requests after all logic is done. (very rear like 1 of 10 similar requests postman API gives error, but it`s problem with postman API)
 
 ## Directory Structure
 
@@ -20,9 +20,11 @@ While the destinationsConfig.json file contains configurations for various desti
 
 `src/mainLogic`: This directory contains the main logic functions for the application. Such as Strategies, how they applies etc.
 
-`src/middleware`: This directory contains middleware for the application. The jwtAuthorization.ts file contains the JWT authorization middleware, while the jwtInjection.ts file contains logic of injecting token into request so we could authorize it.
+`src/middleware`: This directory contains middleware for the application. The jwtAuthorization.ts file contains the JWT authorization middleware, while the jwtInjection.ts file contains logic of injecting token into request so we could authorize it. The eventValidation.ts file contains basic validation for event in request
 
 `src/routes`: This directory contains the routes for the application. The eventRouter.ts file contains the routes for handling events.
+
+`src/types`: This directory contains the types for the application.
 
 ## Running the Application
 
@@ -36,7 +38,9 @@ To build the application, run npm run build. This will compile the TypeScript co
 
 ## Testing Application
 
-I used https://www.postman.com/ service to send requests to my app, to send request to localhost you should install Postman Desktop agent
+I used https://www.postman.com/ service to send requests to my app.
+
+To send request to localhost you should install Postman Desktop agent
 https://blog.postman.com/introducing-the-postman-agent-send-api-requests-from-your-browser-without-limits/
 
 Endpoint of app `localhost:3000/event` you can send `post`, `put`, `patch` requests to it and you can use request `body` that i left here:
