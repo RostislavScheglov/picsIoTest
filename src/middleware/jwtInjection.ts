@@ -1,14 +1,7 @@
-import { Event } from '../controllers/eventController'
 import jwt from 'jsonwebtoken'
 import { NextFunction, Response } from 'express'
-import { Request } from 'express'
 import { Secret } from '../config/appConfing'
-
-export interface CustomRequest extends Request {
-  token?: string
-  auth?: string
-  event: Event
-}
+import { CustomRequest } from '../types/mainTypes'
 
 export function jwtInjection( // Made this function beacuse there are no information about tokens in requests,
   req: CustomRequest, //but we should make jwt authorization

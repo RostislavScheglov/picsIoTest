@@ -21,10 +21,15 @@
   },
   {
     "name": "destination5",
-    "transport": "console.log"
+    "url": "https://postman-echo.com/delete",
+    "transport": "https.delete"
   },
   {
     "name": "destination6",
+    "transport": "console.log"
+  },
+  {
+    "name": "destination7",
     "transport": "console.warn"
   }
 ]

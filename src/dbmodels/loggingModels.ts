@@ -7,6 +7,7 @@ const transactionSchema = new mongoose.Schema( //Main schema for logging main re
       url: String,
       method: String,
       body: mixedType,
+      query: mixedType,
       headers: {
         type: Map,
         of: String,

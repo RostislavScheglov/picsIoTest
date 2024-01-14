@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import { NextFunction, Response } from 'express'
-import { CustomRequest } from './jwtInjection'
 import { Secret } from '../config/appConfing'
+import { CustomRequest } from '../types/mainTypes'
 
 export function jwtAuthorization(
   req: CustomRequest,

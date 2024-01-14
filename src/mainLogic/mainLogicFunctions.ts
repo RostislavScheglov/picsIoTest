@@ -1,10 +1,12 @@
+import destinationsConfig from '../config/destinationsConfig.json'
 import {
   Destination,
   Event,
   PosibleDestinations,
-} from '../controllers/eventController'
-import destinationsConfig from '../config/destinationsConfig.json'
-import { StrategyFunction } from '../controllers/eventController'
+  Strategy,
+  StrategyFunction,
+  confingDestination,
+} from '../types/mainTypes'
 
 //Strategies
 export const defaultStrategy = 'ALL'
@@ -17,6 +19,18 @@ export const strategies = {
   },
   ANY: (destinations: PosibleDestinations) =>
     destinations.some((intent) => intent),
+}
+//Get needeble strategy
+export const getStrategy = (strategy: Strategy) => {
+  if (strategy === 'ALL' || strategy === 'ANY') {
+    return strategies[strategy]
+  } else {
+    const customClientSrategy: StrategyFunction = new Function( //This is not safe, but we should make function from client string
+      'posibleDestinations',
+      ('return ' + strategy) as any
+    ) as StrategyFunction
+    return customClientSrategy //Additional check on function is needed
+  }
 }
 
 //Apply strategys to destinations and return array of objects with boolean results
@@ -46,10 +60,12 @@ export const destinationsCheck = (uniqueDestinations: string[]) => {
     }
   })
 }
-
-export const consoleActions = (destination: any, event: Event) => {
+//Make console actions
+export const consoleActions = (
+  destination: confingDestination,
+  event: Event
+) => {
   const action = destination.transport.split('.')[1]
-  console.log(action)
   const consoleActions: { [key: string]: () => void } = {
     log: () => {
       console.log(event.payload)

@@ -1,10 +1,4 @@
-import {
-  Destination,
-  Event,
-  PosibleDestinations,
-} from '../controllers/eventController'
-import destinationsConfig from '../config/destinationsConfig.json'
-import { StrategyFunction } from '../controllers/eventController'
+import { Destination, PosibleDestinations } from '../types/mainTypes'
 
 // Get all unique keys from possibleDestinations
 export const getUniqueKeys = (
@@ -21,18 +15,18 @@ export const getUniqueKeys = (
 }
 
 //merge all objects in 1 to send in response
-export const formatDestinations = (destinationResults: any) => {
-  return destinationResults.reduce((prev: any, curr: any) => {
+export const formatDestinations = (destinationResults: Destination[]) => {
+  return destinationResults.reduce((prev: Destination, curr: Destination) => {
     return { ...prev, ...curr }
   }, {})
 }
 
 // Filter out false values and get only keys
-export const getFilteredKeys = (destinationResults: any) => {
-  const filteredResults = destinationResults.filter((result: any) => {
+export const getFilteredKeys = (destinationResults: Destination[]) => {
+  const filteredResults = destinationResults.filter((result: Destination) => {
     return Object.values(result).every((value) => value !== false)
   })
-  return filteredResults.reduce((keys: string[], result: any) => {
+  return filteredResults.reduce((keys: string[], result: Destination) => {
     Object.entries(result).forEach(([key, value]) => {
       if (value !== false) {
         keys.push(key)
