@@ -26,15 +26,32 @@ While the destinationsConfig.json file contains configurations for various desti
 
 `src/types`: This directory contains the types for the application.
 
-## Running the Application
+## Building and running the Application with Docker
 
-To run the application, you need to have Node.js and npm installed. Once you have these installed, you can install the application's dependencies by running npm install in the application's root directory.
+You should install docker firstly)
+
+Then login in terminal
+`docker login`
+
+Pull docker img from my public repository
+
+`docker pull rostislav733/picsio:latest`
+
+Then
+
+`docker run -p 3000:3000 rostislav733/picsio`
+
+After running this command, new container is created and started. If you want to restart an existing container, you would use
+
+`docker start <container-id>` instead
+
+After container is created and started, your application should be accessible at `localhost:3000` on your host machine.
+
+## Running the Application without docker
+
+To run the application, clone git repository, you need to have Node.js and npm installed. Once you have these installed, you can install the application's dependencies by running npm install in the application's root directory.
 
 After the dependencies are installed, you can start the application by running npm start.
-
-## Building the Application
-
-To build the application, run npm run build. This will compile the TypeScript code into JavaScript code, which can then be run with Node.js.
 
 ## Testing Application
 
